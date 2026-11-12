@@ -1,0 +1,24 @@
+{
+  "judul": "Contoh rubrik uraian lintas mata kuliah: sampel acak",
+  "aturan_umum": [
+    "Ejaan dan tata bahasa tidak dinilai.",
+    "Istilah tidak harus persis bila maknanya benar."
+  ],
+  "soal": [
+    {
+      "slot": 1,
+      "nama": "U1 Sampel acak",
+      "maks": 10,
+      "teks": "Jelaskan apa yang dimaksud dengan sampel acak dan mengapa pengambilan sampel secara acak penting dalam penelitian. Berikan satu contoh.",
+      "jawaban_ideal": "Sampel acak adalah sampel yang setiap anggota populasinya punya peluang yang sama untuk terpilih. Pengambilan acak penting karena mengurangi bias pemilihan sehingga hasil sampel dapat digeneralisasi ke populasi. Contoh: memilih 50 mahasiswa dari daftar seluruh mahasiswa dengan bilangan acak.",
+      "butir": [
+        { "id": "U1a", "label": "Pengertian sampel acak", "poin": 3, "teks": "Menyatakan bahwa setiap anggota populasi punya peluang yang sama (atau diketahui) untuk terpilih." },
+        { "id": "U1b", "label": "Alasan: mengurangi bias", "poin": 4, "teks": "Menjelaskan bahwa pengambilan acak mengurangi bias pemilihan atau membuat sampel mewakili populasi, sehingga hasilnya dapat digeneralisasi." },
+        { "id": "U1c", "label": "Contoh pengambilan acak", "poin": 3, "teks": "Memberi satu contoh prosedur pengambilan acak yang benar, misalnya undian atau bilangan acak dari daftar populasi." }
+      ],
+      "aturan": [
+        "U1c: contoh pengambilan sampel yang tidak acak (mis. memilih teman terdekat atau responden yang kebetulan lewat) tidak memenuhi butir ini."
+      ]
+    }
+  ]
+}

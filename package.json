@@ -1,0 +1,16 @@
+{
+  "name": "kerangka-pembagian-peran-ai",
+  "author": "Muhammad Edya Rosadi",
+  "version": "1.16.0",
+  "description": "Kerangka penilaian tugas dengan bantuan AI: program untuk fakta, AI untuk draf berbukti, dosen untuk keputusan.",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test uji/cli.test.js && python -m unittest uji/audit_test.py",
+    "nilai": "node alat/cli/nilai.js",
+    "skema": "node alat/cli/buat-skema.js"
+  }
+}

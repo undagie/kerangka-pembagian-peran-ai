@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kunci-tugas.schema.json",
+  "title": "Kunci penilaian tugas repositori",
+  "description": "Kunci untuk tugas yang dikumpulkan sebagai repositori atau folder. Validasi lengkap (jumlah poin, pola isi:, ID ganda) dijalankan alat lewat perintah cek; skema ini membantu penyunting dan agen AI menulis kunci.",
+  "type": "object",
+  "required": ["kriteria"],
+  "properties": {
+    "judul": { "type": "string", "description": "Judul tugas, ditampilkan di laporan." },
+    "label_ai": { "type": "string", "description": "Label AI tugas, mis. \"AI 1 (Kuning)\". Dikirim ke AI sebagai konteks." },
+    "folder_fokus": { "type": "string", "description": "Folder tugas di dalam repositori, mis. \"p01\". Kosong berarti seluruh repositori." },
+    "folder_cadangan": { "type": "array", "items": { "type": "string" }, "description": "Folder lain yang dibaca bila berkas wajib tidak ada di folder fokus." },
+    "pola_nama_repo": { "type": "string", "description": "Regex nama repositori, boleh memuat {NPM}. Dicocokkan program, tidak dikirim ke AI." },
+    "berkas_wajib": { "type": "array", "items": { "type": "string" }, "description": "Pola berkas yang harus ada (glob relatif terhadap akar repositori)." },
+    "berkas_terlarang": { "type": "array", "items": { "type": "string" }, "description": "Pola berkas yang tidak boleh ikut, mis. \"**/*.exe\"." },
+    "versi_dinilai": { "enum": ["terakhir", "sebelum_batas"], "default": "terakhir" },
+    "tolak_unggah_web": { "type": "boolean", "default": true, "description": "Kiriman yang commit terakhirnya di folder tugas dibuat lewat web GitHub diminta dikumpulkan ulang." },
+    "izinkan_web_dokumen": { "type": "boolean", "default": false, "description": "Dokumen (README, jawaban teks, tangkapan layar) boleh diunggah lewat web walau tolak_unggah_web aktif." },
+    "perintah_build": { "type": "string", "description": "Perintah build yang diharapkan, sebagai konteks untuk AI. Alat tidak menjalankannya." },
+    "gambar": {
+      "type": "object",
+      "properties": {
+        "maks": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Jumlah tangkapan layar yang dilampirkan ke AI. 0 berarti gambar tidak dibaca." },
+        "keterangan": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "kunci_jawaban": { "type": "array", "items": { "type": "string" }, "description": "Jawaban benar atau keluaran yang diharapkan." },
+    "aturan_tambahan": { "type": "array", "items": { "type": "string" }, "description": "Aturan penilaian tambahan untuk AI." },
+    "kemiripan": {
+      "type": "object",
+      "properties": {
+        "berkas": { "type": "array", "items": { "type": "string" }, "description": "Berkas yang dibandingkan antarmahasiswa, mis. catatan atau refleksi." },
+        "tindakan": { "enum": ["tahan", "langsung"], "default": "tahan" },
+        "kalimat": { "type": "string", "description": "Kalimat yang ditambahkan ke umpan balik bila berkas identik. Tanpa tanda pisah panjang." },
+        "gambar": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "kriteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["aspek"],
+        "properties": {
+          "id": { "type": "string", "description": "Mis. K1. Bila kosong, alat memberi K1, K2, dan seterusnya." },
+          "aspek": { "type": "string" },
+          "bobot": { "type": "number", "minimum": 0, "description": "Bila ada butir, bobot harus sama dengan jumlah poin butir." },
+          "sumber": { "enum": ["repo", "lms"], "default": "repo", "description": "\"lms\" untuk kriteria yang dinilai dosen di luar repositori, mis. presentasi." },
+          "tercapai": { "type": "string" },
+          "sebagian": { "type": "string" },
+          "butir": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["teks", "poin"],
+              "properties": {
+                "id": { "type": "string", "description": "Mis. K1a. Unik di seluruh kunci." },
+                "teks": { "type": "string" },
+                "poin": { "type": "number", "exclusiveMinimum": 0 },
+                "cek": {
+                  "type": "string",
+                  "description": "Syarat yang diperiksa program, dipisah titik koma: ada:<glob>, tanpa:<glob>, gitignore:<pola>, folder:<glob>, isi:<glob>~<regex>, commit:<n>, gambar:<n>, readmegambar:<n>, repo, tanpaweb. Hasil program mengalahkan klaim AI."
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}

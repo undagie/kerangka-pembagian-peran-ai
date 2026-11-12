@@ -1,0 +1,119 @@
+{
+  "judul": "PBO 2 P01: Lingkungan Java Modern, Maven, dan Git",
+  "label_ai": "",
+  "folder_fokus": "p01-halo-java",
+  "pola_nama_repo": "pbo2-{NPM}",
+  "berkas_wajib": [
+    "p01-halo-java/pom.xml",
+    "p01-halo-java/src/main/java/id/ac/kampus/pbo2/p01/HaloPBO2.java",
+    "p01-halo-java/src/main/java/id/ac/kampus/pbo2/p01/KartuMahasiswa.java"
+  ],
+  "berkas_terlarang": [
+    "*.class"
+  ],
+  "versi_dinilai": "terakhir",
+  "izinkan_web_dokumen": true,
+  "perintah_build": "mvn -q compile exec:java -Dexec.mainClass=id.ac.kampus.pbo2.p01.<kelas>",
+  "gambar": {
+    "maks": 6,
+    "keterangan": "keluaran program HaloPBO2 (memuat baris Versi Java), keluaran program KartuMahasiswa, dan hasil perintah git log --oneline yang menunjukkan minimal dua commit"
+  },
+  "kemiripan": {
+    "berkas": [
+      "p01-halo-java/KartuMahasiswa.java"
+    ],
+    "tindakan": "tahan",
+    "kalimat": "Isi {berkas} sama persis dengan kiriman mahasiswa lain, padahal kartu ini harus berisi data dan alasan Anda sendiri. Jangan diulangi pada tugas berikutnya.",
+    "gambar": true
+  },
+  "kunci_jawaban": [
+    "Repositori pbo2-NPM berisi folder proyek Maven p01-halo-java buatan NetBeans (Java with Maven, Java Application) dengan pom.xml dan kode di src/main/java/id/ac/kampus/pbo2/p01/: HaloPBO2.java dan KartuMahasiswa.java. groupId id.ac.kampus.pbo2, artifactId p01-halo-java, package id.ac.kampus.pbo2.p01. .gitignore Maven yang dibuat bersama repositori membuat folder target/ tidak ikut di-commit.",
+    "HaloPBO2.java: package id.ac.kampus.pbo2.p01; method main mencetak sapaan \"Halo, <nama>!\", \"Selamat datang di Pemrograman Berbasis Objek 2.\", baris kosong, lalu \"Versi Java  : \" + System.getProperty(\"java.version\"), \"Vendor JDK  : \" + System.getProperty(\"java.vendor\"), dan \"Sistem operasi : \" + System.getProperty(\"os.name\"). Nama di sapaan boleh diganti nama sendiri.",
+    "Contoh keluaran HaloPBO2: Halo, Mahasiswa Teknik Informatika! / Selamat datang di Pemrograman Berbasis Objek 2. / (baris kosong) / Versi Java : 25.0.2 / Vendor JDK : Eclipse Adoptium / Sistem operasi : Windows 11. Versi Java yang tampil harus 21 atau lebih baru (21, 22, 23, 24, 25, dst.); 17 atau lebih lama berarti JDK yang dipakai belum sesuai. Vendor dan nama sistem operasi boleh berbeda.",
+    "pom.xml: exec.mainClass diubah menjadi id.ac.kampus.pbo2.p01.HaloPBO2 (langkah 8) supaya Run Project (F6) menjalankan HaloPBO2, dan kelas utama bawaan NetBeans dihapus. maven.compiler.release bernilai 21 atau lebih.",
+    "KartuMahasiswa.java (Latihan Mandiri D): kelas di package id.ac.kampus.pbo2.p01 dengan method main; nama, NPM, program studi, dan semester disimpan dalam variabel bertipe sesuai: nama, NPM, dan prodi bertipe String, semester bertipe int. NPM bertipe long kurang tepat karena NPM bukan bilangan untuk dihitung; NPM 10 digit bertipe int tidak bisa dikompilasi.",
+    "Contoh keluaran KartuMahasiswa: garis ==============================, KARTU MAHASISWA PBO 2, garis, Nama : ..., NPM : ..., Prodi : ..., Semester : ..., Alasan : <alasan mengambil PBO 2>, garis penutup. Data diisi data mahasiswa itu sendiri (NPM di kartu dicocokkan program dengan NPM mahasiswa). Beda jumlah spasi atau panjang garis diabaikan; baris tambahan (mis. kelas) diterima.",
+    "Tangkapan layar yang diminta: keluaran HaloPBO2, keluaran KartuMahasiswa, dan hasil perintah git log --oneline yang memperlihatkan minimal dua commit. Satu tangkapan layar boleh memuat lebih dari satu hal. Tangkapan layar dinilai isinya di mana pun letaknya di repositori; yang ditautkan di README.md dinilai terpisah di K2f.",
+    "Hasil git log --oneline berupa daftar baris berisi hash pendek (7 karakter) dan pesan commit. Halaman riwayat commit di situs GitHub bukan hasil git log --oneline.",
+    "Commit: minimal dua commit, termasuk commit awal saat membuat repositori di GitHub. Contoh pesan yang bermakna: \"P01: proyek pertama HaloPBO2\", \"Menambahkan KartuMahasiswa\".",
+    "Praktikum 6 (kompilasi manual dengan javac ke folder out) adalah pengayaan dan tidak wajib. Pertanyaan refleksi bagian G tidak diminta dikumpulkan dan tidak dinilai."
+  ],
+  "kriteria": [
+    {
+      "id": "K1",
+      "aspek": "Lingkungan pengembangan",
+      "bobot": 30,
+      "sumber": "repo",
+      "tercapai": "Tangkapan layar memperlihatkan JDK 21 atau lebih baru (baris Versi Java pada keluaran HaloPBO2), program dijalankan dari NetBeans (jendela Output NetBeans), dan Git berfungsi (hasil git log --oneline dengan minimal dua commit).",
+      "sebagian": "Salah satu bukti lingkungan belum terlihat, mis. tidak ada tangkapan layar git log, versi Java di bawah 21, atau keluaran tidak dari NetBeans.",
+      "butir": [
+        { "id": "K1a", "teks": "Keluaran HaloPBO2 menampilkan Java 21 atau lebih baru", "poin": 12, "cek": "" },
+        { "id": "K1b", "teks": "Tangkapan layar git log --oneline minimal dua commit", "poin": 10, "cek": "" },
+        { "id": "K1c", "teks": "Program dijalankan di NetBeans (jendela Output)", "poin": 8, "cek": "" }
+      ]
+    },
+    {
+      "id": "K2",
+      "aspek": "Repository dan struktur proyek",
+      "bobot": 30,
+      "sumber": "repo",
+      "tercapai": "Repositori pbo2-NPM berisi proyek Maven p01-halo-java yang rapi: pom.xml, kelas di src/main/java dengan package id.ac.kampus.pbo2.p01, folder target dan out tidak ikut tersimpan, dan tangkapan layar ditautkan di README.md.",
+      "sebagian": "Ada bagian struktur yang belum sesuai, mis. package berbeda, folder target ikut di-commit, atau tangkapan layar tidak ditautkan di README.",
+      "butir": [
+        { "id": "K2a", "teks": "Nama repositori pbo2-NPM", "poin": 4, "cek": "repo" },
+        { "id": "K2b", "teks": "Proyek Maven p01-halo-java dengan pom.xml", "poin": 8, "cek": "ada:p01-halo-java/pom.xml" },
+        { "id": "K2c", "teks": "HaloPBO2 tersimpan di src/main/java proyek", "poin": 5, "cek": "ada:p01-halo-java/src/main/java/**/HaloPBO2.java" },
+        { "id": "K2d", "teks": "Kelas di package id.ac.kampus.pbo2.p01", "poin": 3, "cek": "isi:**/HaloPBO2.java~^\\s*package\\s+id\\.ac\\.kampus\\.pbo2\\.p01\\s*;" },
+        { "id": "K2e", "teks": "Folder target dan out tidak ikut di-commit", "poin": 5, "cek": "tanpa:p01-halo-java/target/**; tanpa:p01-halo-java/out/**; tanpa:target/**; tanpa:out/**" },
+        { "id": "K2f", "teks": "Tangkapan layar ditautkan di README.md", "poin": 5, "cek": "readmegambar:2" }
+      ]
+    },
+    {
+      "id": "K3",
+      "aspek": "Program berjalan",
+      "bobot": 20,
+      "sumber": "repo",
+      "tercapai": "HaloPBO2 dan KartuMahasiswa lengkap, dapat dikompilasi, dan keluarannya sesuai ketentuan; tipe data kartu sesuai; exec.mainClass di pom.xml menunjuk kelas proyek ini.",
+      "sebagian": "Salah satu program belum lengkap atau keluarannya belum sesuai, tipe data kurang tepat, atau exec.mainClass belum diubah.",
+      "butir": [
+        { "id": "K3a", "teks": "HaloPBO2 lengkap dan keluarannya sesuai", "poin": 7, "cek": "" },
+        { "id": "K3b", "teks": "KartuMahasiswa menampilkan kartu lengkap seperti contoh", "poin": 5, "cek": "" },
+        { "id": "K3c", "teks": "Tipe data kartu sesuai (NPM String, semester int)", "poin": 3, "cek": "" },
+        { "id": "K3d", "teks": "exec.mainClass menunjuk kelas proyek", "poin": 3, "cek": "isi:**/pom.xml~<exec\\.mainClass>\\s*[\\w.]*(HaloPBO2|KartuMahasiswa)\\s*</exec\\.mainClass>" },
+        { "id": "K3e", "teks": "Kartu memuat NPM mahasiswa sendiri", "poin": 2, "cek": "isi:**/Kartu*.java~{NPM}" }
+      ]
+    },
+    {
+      "id": "K4",
+      "aspek": "Kualitas commit",
+      "bobot": 20,
+      "sumber": "repo",
+      "tercapai": "Minimal dua commit, dan pesan commit untuk pekerjaan P01 jelas menjelaskan perubahannya.",
+      "sebagian": "Hanya satu commit, atau pesan commit untuk pekerjaan P01 tidak bermakna.",
+      "butir": [
+        { "id": "K4a", "teks": "Minimal dua commit", "poin": 8, "cek": "commit:2" },
+        { "id": "K4b", "teks": "Pesan commit pekerjaan P01 bermakna", "poin": 12, "cek": "" }
+      ]
+    },
+    {
+      "id": "K5",
+      "aspek": "Kuis 1 - Tes Diagnostik PBO 1",
+      "bobot": 0,
+      "sumber": "lms",
+      "tercapai": "Dikerjakan dan dinilai di LMS, bukan dari repositori.",
+      "sebagian": ""
+    }
+  ],
+  "aturan_tambahan": [
+    "Repositori pbo2-NPM dipakai sepanjang semester. Folder dan tangkapan layar untuk pertemuan lain (mis. p02-perpustakaan-mini, p03-komponen-gui, gambar bernama Tugas 2 atau P03) tidak dinilai dan tidak dikomentari.",
+    "K1a dinilai dari tangkapan layar keluaran HaloPBO2 (baris Versi Java). Bila tidak ada tangkapan layar keluaran HaloPBO2 yang terbaca, K1a tidak terpenuhi walaupun kodenya benar.",
+    "K1b terpenuhi bila ada tangkapan layar hasil git log --oneline (baris hash pendek dan pesan commit) dengan minimal dua commit. Tangkapan layar halaman riwayat commit di situs GitHub tidak memenuhi K1b; sebut sebagai masukan.",
+    "K1c terpenuhi bila salah satu tangkapan layar keluaran memperlihatkan salah satu tanda Output NetBeans: tab atau jendela Output, baris BUILD SUCCESS, atau baris --- exec ... @ p01-halo-java ---. Satu tanda saja sudah cukup walaupun jendelanya terpotong. Tangkapan layar yang hanya berisi teks keluaran di Command Prompt tanpa tanda itu tidak memenuhi K1c.",
+    "K3a dan K3b dinilai dari kode yang ditelusuri, ditambah tangkapan layar keluarannya bila ada. Tidak adanya tangkapan layar sudah dihitung di K1, jadi K3a dan K3b tidak boleh gagal hanya karena tangkapan layar tidak ada. Beda jumlah spasi pada label dan salah ketik kecil pada teks yang dicetak (mis. Pemprograman, Selamat data, Halo tanpa koma) cukup jadi masukan. K3a hanya gagal bila HaloPBO2 tidak ada, tidak dapat dikompilasi, atau tidak mencetak sapaan dan ketiga informasi lingkungan (versi Java, vendor, sistem operasi); versi Java di bawah 21 dinilai di K1a, bukan K3a. K3b tidak terpenuhi bila nama, NPM, prodi, semester, atau alasan tidak ditampilkan; garis pemisah atau judul kartu yang hilang atau berbeda cukup jadi masukan. Apakah NPM di kartu milik mahasiswa itu sendiri diperiksa program di K3e, jadi tidak dinilai di K3b.",
+    "K3c hanya menilai tipe variabel KartuMahasiswa: nama, NPM, dan prodi String, semester int (byte atau short juga diterima). NPM bertipe long tidak memenuhi K3c. Bila KartuMahasiswa tidak ada, K3b dan K3c tidak terpenuhi.",
+    "K2a, K2b, K2c, K2d, K2e, K2f, K3d, K3e, dan K4a diperiksa program; salin hasilnya dari FAKTA TERVERIFIKASI.",
+    "K4b: pesan commit untuk pekerjaan P01 dianggap bermakna bila menyebut pekerjaannya atau pertemuannya (mis. \"P01: proyek pertama HaloPBO2\", \"menambahkan KartuMahasiswa\", \"tugas pertemuan 1\"). Commit awal bawaan GitHub (\"Initial commit\") dan commit untuk pertemuan lain tidak dinilai di K4b. Tidak bermakna bila semua commit pekerjaan P01 hanya berbunyi umum seperti \"update\", \"first commit\", atau \"Add files via upload\".",
+    "Proyek p01-halo-java wajib di-commit dan di-push dengan git. Kiriman yang commit terakhirnya di folder p01-halo-java dibuat lewat web GitHub ditolak program dengan templat agar dikumpulkan ulang dari repositori yang sama. Menempelkan tangkapan layar atau menyunting README lewat web, serta commit awal saat membuat repositori, tidak melanggar.",
+    "Kelas utama bawaan NetBeans yang belum dihapus cukup jadi masukan, tidak mengurangi poin."
+  ]
+}

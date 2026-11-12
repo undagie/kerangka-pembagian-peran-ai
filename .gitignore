@@ -1,0 +1,23 @@
+# Rahasia
+.env
+.env.*
+*.env
+.claude/settings.local.json
+
+# Data mahasiswa dan keluaran penilaian
+kiriman/
+paket/
+jawaban/
+hasil/
+audit-keluaran/
+hasil_audit.md
+identitas*.csv
+*.xlsx
+*.xls
+
+# Sistem dan alat
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

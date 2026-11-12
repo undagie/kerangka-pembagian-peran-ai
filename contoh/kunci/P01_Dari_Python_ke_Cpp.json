@@ -1,0 +1,137 @@
+{
+  "judul": "P01: Dari Python ke C++",
+  "label_ai": "AI 0",
+  "folder_fokus": "p01",
+  "pola_nama_repo": "pt-{NPM}",
+  "berkas_wajib": [
+    "p01/hello.cpp",
+    "p01/rerata.cpp",
+    "p01/catatan_kesalahan.md"
+  ],
+  "berkas_terlarang": [
+    "*.exe"
+  ],
+  "versi_dinilai": "terakhir",
+  "kemiripan": {
+    "berkas": [
+      "p01/catatan_kesalahan.md"
+    ],
+    "tindakan": "tahan",
+    "kalimat": "Isi {berkas} sama persis dengan kiriman mahasiswa lain, padahal bagian ini harus dikerjakan sendiri. Jangan diulangi pada tugas berikutnya: tuliskan hasil pengamatan dan penjelasan dengan kata-kata sendiri."
+  },
+  "perintah_build": "g++ -std=c++20 -Wall -Wextra -Wpedantic -g <berkas>.cpp -o <program>",
+  "kunci_jawaban": [
+    "hello.cpp: #include <iostream>, int main(), mencetak \"Halo dari C++\" dengan std::cout diakhiri \\n, lalu return 0. Harus bebas error dan warning.",
+    "rerata.cpp adalah porting rerata.py: tugas = 80, uts = 75, uas = 90 (int); jumlah = tugas + uts + uas bertipe int bernilai 245; rerata bertipe double dihitung TANPA pembagian bilangan bulat (mis. jumlah / 3.0 atau static_cast<double>(jumlah) / 3); dicetak dengan std::fixed << std::setprecision(2) (butuh #include <iomanip>).",
+    "Keluaran rerata.cpp yang benar sama dengan versi Python: baris Jumlah bernilai 245 dan baris Rata-rata bernilai 81.67 (dua angka di belakang koma). Perbedaan spasi pada label (mis. \"Jumlah : 245\" dibanding \"Jumlah    : 245\") DIABAIKAN, yang dinilai nilai yang dicetak.",
+    "Latihan Mandiri D.1 di modul meminta rerata.cpp diubah supaya menghitung rata-rata dari lima nilai, jadi versi lima nilai DITERIMA setara dengan versi tiga nilai bila perhitungannya benar: jumlah = total kelima nilai, rata-rata = jumlah dibagi 5 tanpa pembagian bilangan bulat (mis. jumlah / 5.0 atau static_cast<double>(jumlah) / 5), dicetak dengan std::fixed << std::setprecision(2). Nama dua nilai tambahan bebas (mis. kehadiran, latihan, keaktifan). Hitung sendiri jumlah dan rata-rata yang benar dari nilai yang dipakai mahasiswa, jangan membandingkannya dengan 245 dan 81.67.",
+    "Kesalahan umum rerata.cpp: double rerata = jumlah / 3; (pembagian bilangan bulat, hasil 81.00 = kesalahan logika); TODO tidak diisi sehingga muncul warning unused variable untuk tugas, uts, uas; setprecision tanpa std::fixed; lupa #include <iomanip>.",
+    "catatan_kesalahan.md berisi tabel Praktikum 5 dengan 4 baris (k1_sintaks.cpp, k2_nama.cpp, k3_runtime.cpp, k4_logika.cpp) dan kolom: Jenis kesalahan, Pesan yang muncul (baris pertama pesan), Cara kamu mengetahuinya.",
+    "Jenis yang benar: k1_sintaks.cpp = Sintaks (titik koma hilang setelah int nilai = 80; pesan semacam \"error: expected ',' or ';' before 'std'\", gagal saat compile, .exe tidak terbentuk).",
+    "k2_nama.cpp = kesalahan compile / nama belum dikenal (\"'Nilai' was not declared in this scope\", sering disertai \"did you mean 'nilai'?\"; juga 'bonus' belum dideklarasikan).",
+    "k3_runtime.cpp = Runtime (build sukses tanpa pesan compiler; program berhenti mendadak saat jumlah mahasiswa diisi 0 karena pembagian dengan nol). Kolom pesan boleh berisi \"tidak ada pesan compiler\" atau gejala program berhenti.",
+    "k4_logika.cpp = Logika (build sukses tanpa pesan apa pun; hasil 81, bukan 81.67, karena (tugas + uts + uas) / 3 adalah pembagian bilangan bulat). Kolom pesan wajar berisi \"tidak ada pesan\"; cara mengetahuinya dengan membandingkan hasil dengan versi Python.",
+    "catatan_kesalahan.md juga harus memuat satu kalimat: jenis kesalahan mana yang paling berbahaya dan alasannya. Jawaban yang paling sesuai modul: kesalahan logika, karena tidak ada yang memberi peringatan. Jawaban lain diterima bila alasannya masuk akal.",
+    "versi.cpp (Praktikum 2) dan berkas perbaikan k1 sampai k4 tidak wajib ada di repositori; bila ada, versi.cpp mencetak 202002 (C++20)."
+  ],
+  "kriteria": [
+    {
+      "id": "K1",
+      "aspek": "Struktur repositori",
+      "bobot": 20,
+      "sumber": "repo",
+      "tercapai": "Repositori bernama pt-NPM; folder p01 berisi hello.cpp, rerata.cpp, dan catatan_kesalahan.md dengan nama dan lokasi persis.",
+      "sebagian": "Ada berkas wajib yang nama atau lokasinya tidak persis, tidak ada, atau nama repositori tidak sesuai pola pt-NPM.",
+      "butir": [
+        { "id": "K1a", "teks": "Repositori bernama pt-NPM", "poin": 5, "cek": "repo" },
+        { "id": "K1b", "teks": "p01/hello.cpp dengan nama dan lokasi persis", "poin": 5, "cek": "ada:p01/hello.cpp" },
+        { "id": "K1c", "teks": "p01/rerata.cpp dengan nama dan lokasi persis", "poin": 5, "cek": "ada:p01/rerata.cpp" },
+        { "id": "K1d", "teks": "p01/catatan_kesalahan.md dengan nama dan lokasi persis", "poin": 5, "cek": "ada:p01/catatan_kesalahan.md" }
+      ]
+    },
+    {
+      "id": "K2",
+      "aspek": "Lingkungan dan build (hello.cpp)",
+      "bobot": 15,
+      "sumber": "repo",
+      "tercapai": "hello.cpp sesuai modul dan tampak bisa dibangun dengan perintah build kelas tanpa error dan tanpa warning.",
+      "sebagian": "hello.cpp ada tetapi menyimpang dari yang diminta atau berpotensi memunculkan warning/error.",
+      "butir": [
+        { "id": "K2a", "teks": "hello.cpp memakai #include <iostream> dan int main()", "poin": 4, "cek": "isi:p01*/**/hello.cpp~#include\\s*<iostream>; isi:p01*/**/hello.cpp~int\\s+main\\s*\\(" },
+        { "id": "K2b", "teks": "hello.cpp mencetak Halo dari C++", "poin": 5, "cek": "" },
+        { "id": "K2c", "teks": "hello.cpp tampak bebas error dan warning", "poin": 6, "cek": "" }
+      ]
+    },
+    {
+      "id": "K3",
+      "aspek": "Hasil porting rerata.cpp",
+      "bobot": 30,
+      "sumber": "repo",
+      "tercapai": "Ketiga TODO dikerjakan: jumlah benar, rata-rata bertipe double tanpa pembagian bilangan bulat, dicetak dua angka di belakang koma sehingga nilai keluarannya sama dengan Python (245 dan 81.67), dan tidak ada variabel yang tidak terpakai. Versi lima nilai dari Latihan Mandiri D.1 yang perhitungannya benar setara.",
+      "sebagian": "Sebagian TODO benar, misalnya rata-rata masih pembagian bilangan bulat, nilai tidak dicetak dua angka di belakang koma, baris Jumlah tidak dicetak, atau ada potensi warning.",
+      "butir": [
+        { "id": "K3a", "teks": "Jumlah dihitung dengan benar", "poin": 6, "cek": "" },
+        { "id": "K3b", "teks": "Rata-rata bertipe double tanpa pembagian bilangan bulat", "poin": 10, "cek": "" },
+        { "id": "K3c", "teks": "Rata-rata dicetak dua angka di belakang koma", "poin": 6, "cek": "" },
+        { "id": "K3d", "teks": "Baris Jumlah dan Rata-rata ikut dicetak", "poin": 4, "cek": "" },
+        { "id": "K3e", "teks": "Tidak ada variabel tak terpakai atau potensi warning", "poin": 4, "cek": "" }
+      ]
+    },
+    {
+      "id": "K4",
+      "aspek": "Katalog kesalahan (catatan_kesalahan.md)",
+      "bobot": 25,
+      "sumber": "repo",
+      "tercapai": "Tabel memuat keempat berkas dengan jenis kesalahan yang tepat (k1 sintaks, k2 compile/nama, k3 runtime, k4 logika), pesan yang muncul, dan cara mengetahuinya; ada satu kalimat tentang kesalahan paling berbahaya beserta alasannya.",
+      "sebagian": "Tabel belum lengkap, ada jenis yang salah, kolom pesan/cara kosong, atau kalimat tentang kesalahan paling berbahaya tidak ada.",
+      "butir": [
+        { "id": "K4a", "teks": "k1_sintaks.cpp dikenali sebagai kesalahan sintaks", "poin": 4, "cek": "" },
+        { "id": "K4b", "teks": "k2_nama.cpp dikenali sebagai kesalahan nama belum dikenal", "poin": 4, "cek": "" },
+        { "id": "K4c", "teks": "k3_runtime.cpp dikenali sebagai kesalahan runtime", "poin": 4, "cek": "" },
+        { "id": "K4d", "teks": "k4_logika.cpp dikenali sebagai kesalahan logika", "poin": 4, "cek": "" },
+        { "id": "K4e", "teks": "Kolom pesan yang muncul terisi sesuai", "poin": 3, "cek": "" },
+        { "id": "K4f", "teks": "Kolom cara mengetahuinya terisi", "poin": 3, "cek": "" },
+        { "id": "K4g", "teks": "Kalimat kesalahan paling berbahaya beserta alasannya", "poin": 3, "cek": "" }
+      ]
+    },
+    {
+      "id": "K5",
+      "aspek": "Git dan integritas",
+      "bobot": 10,
+      "sumber": "repo",
+      "tercapai": ".gitignore di akar mengecualikan berkas .exe; tidak ada berkas .exe di repositori; pesan commit bermakna; ada deklarasi AI di README.md.",
+      "sebagian": "Salah satu belum terpenuhi.",
+      "butir": [
+        { "id": "K5a", "teks": ".gitignore di akar mengecualikan *.exe", "poin": 3, "cek": "gitignore:*.exe" },
+        { "id": "K5b", "teks": "Tidak ada berkas .exe di repositori", "poin": 2, "cek": "tanpa:*.exe" },
+        { "id": "K5c", "teks": "Pesan commit untuk P01 bermakna", "poin": 3, "cek": "" },
+        { "id": "K5d", "teks": "Deklarasi AI di README.md", "poin": 2, "cek": "" }
+      ]
+    },
+    {
+      "id": "K6",
+      "aspek": "Lembar refleksi",
+      "bobot": 0,
+      "sumber": "lms",
+      "tercapai": "Dikumpulkan dan dinilai di LMS, bukan dari repositori.",
+      "sebagian": ""
+    }
+  ],
+  "aturan_tambahan": [
+    "Pertemuan 1 bersifat formatif (bobot 0% pada nilai akhir): utamakan masukan tentang kebiasaan yang perlu dibawa ke pertemuan berikutnya.",
+    "Yang dinilai adalah versi repositori terbaru. Repositori pt-NPM dipakai sepanjang semester, jadi commit sesudah batas waktu dan folder p02, p03, dan seterusnya adalah hal biasa: abaikan dan jangan dikomentari.",
+    "Hanya folder p01 (beserta variasi namanya) dan berkas di akar repositori (README.md, .gitignore) yang dinilai.",
+    "K1b sampai K1d diperiksa program dengan nama dan lokasi persis. Bila berkas ada dengan nama atau lokasi yang tidak persis (mis. P01/, p01_Program_Pertama/, Hello.cpp), hanya butir K1 itu yang tidak terpenuhi; isinya tetap dinilai di K2 sampai K4. Bila berkas wajib tidak ada sama sekali, butir yang bergantung pada isinya juga tidak terpenuhi.",
+    "Deskripsi di LMS meminta deklarasi AI di README.md (modul menyebut LMS); ikuti LMS. README.md di akar atau di p01 sama-sama diterima untuk K5d. Tugas berlabel AI 0: deklarasi jujur yang menyatakan memakai AI tetap memenuhi K5d dan tidak mengurangi poin lain, tetapi catat di catatan_dosen.",
+    "Tugas wajib di-commit dan di-push dengan Git Bash atau GitHub Desktop seperti Praktikum 6. Kiriman yang commit terakhirnya di folder p01 dibuat lewat web GitHub tidak dinilai: program memberi templat agar dikumpulkan ulang dari repositori yang sama. Pada kiriman yang dinilai, commit lama lewat web cukup jadi masukan.",
+    "K5c: pesan commit dianggap bermakna bila menyebut pekerjaannya atau pertemuannya (mis. Pertemuan 1: program pertama, tugas p01, porting rerata). Tidak bermakna hanya pesan umum seperti Add files via upload, update, first commit, atau sekadar nama berkas. Satu pesan yang kurang bermakna di antara pesan lain yang sudah baik cukup jadi masukan.",
+    "Bila ada beberapa hello.cpp atau rerata.cpp, nilai yang paling sesuai sebagai berkas utama (di p01 atau variasinya). Salinan yang sengaja dibuat error untuk Latihan Mandiri D.2 sampai D.4 (mis. hello.cpp tanpa tanda kutip di folder latihan) dan program di folder kesalahan/ bukan berkas utama dan tidak mengurangi poin K2 atau K3.",
+    "K2b terpenuhi bila hello.cpp mencetak teks Halo dari C++; beda tanda baca atau huruf besar/kecil kecil cukup jadi masukan. K2c tidak terpenuhi bila ada potensi error atau warning dengan perintah build kelas (mis. include hilang, variabel tak terpakai).",
+    "rerata.cpp boleh berupa hasil porting tiga nilai atau versi lima nilai dari Latihan Mandiri D.1. Keduanya dinilai dari ketepatan perhitungan dan format keluarannya; jangan memberi masukan agar rerata.cpp dikembalikan ke tiga nilai.",
+    "K3b tidak terpenuhi bila rata-rata masih hasil pembagian bilangan bulat (mis. double rerata = jumlah / 3;) atau tidak bertipe double. K3c terpenuhi bila nilai rata-rata tercetak tepat dua angka di belakang koma (std::fixed << std::setprecision(2), atau cara lain yang hasilnya sama); setprecision tanpa std::fixed tidak memenuhi. Kesalahan di K3b tidak dihitung lagi di K3c.",
+    "Perbedaan spasi atau format kecil pada label keluaran (mis. jumlah spasi sebelum titik dua) tidak mengurangi poin dan tidak perlu dijadikan masukan, selama nilai yang dicetak benar.",
+    "K4a sampai K4d dinilai dari kolom Jenis kesalahan untuk masing-masing berkas. Untuk k2, sebutan kesalahan compile, nama atau variabel belum dikenal, atau undeclared diterima. K4e dan K4f terpenuhi bila kolom itu terisi wajar untuk paling sedikit tiga dari empat berkas; untuk k3 dan k4, \"tidak ada pesan compiler\" atau gejala yang terlihat adalah isi yang benar. K4g menerima jawaban apa pun yang alasannya masuk akal.",
+    "Kesalahan kecil yang tidak mengubah isi (mis. ejaan nama berkas di dalam tabel) cukup jadi masukan dan tidak mengurangi poin.",
+    "K5a dan K5b diperiksa program. K5a membaca .gitignore di akar repositori pt-NPM dan mencari baris *.exe."
+  ]
+}

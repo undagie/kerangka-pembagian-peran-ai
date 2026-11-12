@@ -1,0 +1,123 @@
+{
+  "judul": "Rubrik Kuis 2 - Tipe Data dan Input (Uraian Singkat)",
+  "aturan_umum": [
+    "Ejaan, tata bahasa, panjang jawaban, dan kerapian tidak dinilai.",
+    "Jawaban boleh memakai kata-kata sendiri; yang dinilai adalah gagasannya, bukan kesamaan kalimat dengan jawaban ideal.",
+    "Menyalin ulang soal tanpa menambah penjelasan tidak memenuhi butir apa pun.",
+    "Pernyataan yang salah atau bertentangan dengan butir menggugurkan butir terkait, walaupun bagian lain dari jawaban benar.",
+    "Setiap butir dinilai penuh atau nol; tidak ada poin sebagian kecuali disebut pada aturan soal.",
+    "Jawaban yang hanya menyebut istilah tanpa penjelasan yang diminta soal tidak memenuhi butir yang menuntut alasan atau penjelasan.",
+    "Penulisan tipe boleh memakai nama C++ (string, int, double) atau padanan yang jelas maknanya, misalnya teks atau bilangan bulat.",
+    "Kuis dikerjakan 20 menit tanpa catatan: terima rumusan sederhana selama gagasan intinya benar. Jangan menuntut istilah teknis tertentu bila maknanya sudah jelas dari jawaban."
+  ],
+  "soal": [
+    {
+      "slot": 11,
+      "nama": "K02-U1 Memilih tipe",
+      "teks": "Sebuah program kasir menyimpan nama pelanggan, nomor telepon, jumlah barang yang dibeli, dan total harga dalam rupiah dengan sen. Tentukan tipe untuk keempat data itu dan jelaskan alasan masing-masing dalam satu kalimat.",
+      "maks": 20,
+      "jawaban_ideal": "Nama pelanggan bertipe string karena berupa teks yang panjangnya bebas. Nomor telepon juga bertipe string karena tidak pernah dihitung, boleh diawali 0, dan bisa panjang. Jumlah barang bertipe int karena berupa hasil menghitung yang selalu bilangan bulat. Total harga bertipe double karena mengandung pecahan (sen).",
+      "butir": [
+        {
+          "id": "U1a",
+          "label": "Tipe nama pelanggan",
+          "poin": 3,
+          "teks": "Menyebut tipe string (atau teks) untuk nama pelanggan."
+        },
+        {
+          "id": "U1b",
+          "label": "Alasan tipe nama",
+          "poin": 2,
+          "teks": "Alasan yang benar untuk tipe nama, mis. nama berupa teks atau huruf dan bisa lebih dari satu kata."
+        },
+        {
+          "id": "U1c",
+          "label": "Tipe nomor telepon",
+          "poin": 3,
+          "teks": "Menyebut tipe string (atau teks) untuk nomor telepon; int, long, atau double tidak memenuhi."
+        },
+        {
+          "id": "U1d",
+          "label": "Alasan tipe nomor telepon",
+          "poin": 2,
+          "teks": "Alasan yang benar, minimal satu dari: tidak pernah dihitung, bisa diawali 0 atau +62, bisa terlalu panjang untuk int, atau tampak seperti angka padahal teks."
+        },
+        {
+          "id": "U1e",
+          "label": "Tipe jumlah barang",
+          "poin": 3,
+          "teks": "Menyebut tipe bilangan bulat untuk jumlah barang (int; short, long, atau unsigned juga diterima); double atau float tidak memenuhi."
+        },
+        {
+          "id": "U1f",
+          "label": "Alasan tipe jumlah barang",
+          "poin": 2,
+          "teks": "Alasan yang benar, mis. jumlah barang dihitung per buah sehingga selalu bilangan bulat tanpa pecahan."
+        },
+        {
+          "id": "U1g",
+          "label": "Tipe total harga",
+          "poin": 3,
+          "teks": "Menyebut tipe double untuk total harga dengan sen (float juga diterima)."
+        },
+        {
+          "id": "U1h",
+          "label": "Alasan tipe total harga",
+          "poin": 2,
+          "teks": "Alasan yang benar, mis. total harga punya bagian pecahan (sen) yang akan hilang bila memakai int."
+        }
+      ],
+      "aturan": [
+        "Tipe dan alasan dinilai terpisah: tipe yang benar tanpa alasan tetap mendapat poin tipe. Alasan hanya dinilai bila tipe yang dipilih benar; alasan untuk tipe yang salah tidak mendapat poin.",
+        "Nomor telepon bertipe int, long, atau double menggugurkan U1c dan U1d. Alasan \"karena berupa angka\" tidak diterima untuk U1d.",
+        "Total harga bertipe int, atau pernyataan bahwa sen boleh dibuang, menggugurkan U1g dan U1h. Pengecualian: total yang disimpan dalam satuan sen sebagai bilangan bulat (int atau long long) dengan alasan agar tidak ada pecahan diterima untuk keduanya.",
+        "Jumlah barang bertipe double atau float menggugurkan U1e dan U1f.",
+        "Nama bertipe char menggugurkan U1a dan U1b karena char hanya menampung satu karakter.",
+        "Alasan \"agar compiler tidak error\" tanpa kaitan ke sifat datanya tidak diterima.",
+        "Alasan satu kalimat sudah cukup; jawaban boleh berbentuk daftar atau tabel."
+      ]
+    },
+    {
+      "slot": 12,
+      "nama": "K02-U2 Nama yang terpotong",
+      "teks": "Program membaca nama dengan cin >> nama lalu membaca umur dengan cin >> umur. Pengguna mengetik Siti Aminah, Enter, 19, Enter. Jelaskan apa yang terjadi pada kedua variabel dan bagaimana memperbaikinya.",
+      "maks": 20,
+      "jawaban_ideal": "cin >> nama berhenti membaca saat bertemu spasi, sehingga nama hanya berisi 'Siti'. Kata 'Aminah' tertinggal di input dan dipakai oleh cin >> umur. Karena 'Aminah' bukan bilangan, pembacaan umur gagal dan umur berisi 0, bukan 19. Perbaikannya adalah membaca nama dengan getline(cin, nama) agar satu baris penuh termasuk spasi terbaca.",
+      "butir": [
+        {
+          "id": "U2a",
+          "label": "Nama hanya terbaca 'Siti'",
+          "teks": "Menyebut bahwa variabel nama hanya berisi \"Siti\" (karena cin >> berhenti membaca di spasi). Menyebut akibatnya saja, mis. \"nama hanya terbaca Siti\", sudah cukup.",
+          "poin": 5
+        },
+        {
+          "id": "U2b",
+          "label": "'Aminah' tersisa untuk pembacaan umur",
+          "teks": "Menyebut bahwa kata \"Aminah\" tertinggal atau tersisa di input (dan akan terbaca oleh pembacaan berikutnya, yaitu cin >> umur).",
+          "poin": 5
+        },
+        {
+          "id": "U2c",
+          "label": "Umur gagal terbaca, bernilai 0",
+          "teks": "Menyebut bahwa umur tidak berisi 19 karena pembacaan umur gagal atau rusak, sebab yang terbaca \"Aminah\" (bukan angka). Menyebut bahwa nilainya menjadi 0 tidak wajib.",
+          "poin": 5
+        },
+        {
+          "id": "U2d",
+          "label": "Perbaikan dengan getline",
+          "teks": "Menyebut perbaikan memakai getline(cin, nama) untuk membaca nama satu baris penuh termasuk spasi.",
+          "poin": 5
+        }
+      ],
+      "aturan": [
+        "Untuk U2a, rumusan seperti \"cin hanya membaca satu kata\", \"cin berhenti di spasi\", \"nama hanya terbaca Siti\", atau \"cin >> tidak bisa membaca nama lengkap yang mengandung spasi\" diterima.",
+        "Untuk U2b, cukup menyatakan bahwa \"Aminah\" (kata kedua atau sisa input) tertinggal, tersisa, atau nyangkut di input/memori; menyebut bahwa sisa itu terbaca oleh umur tidak wajib.",
+        "Untuk U2c, rumusan seperti \"umur gagal dibaca karena Aminah bukan angka\", \"umur jadi 0\", atau \"umur tidak terisi benar/acak/error\" diterima. Jawaban \"umur terisi Aminah\" atau \"umur terisi 19\" salah dan menggugurkan U2c.",
+        "Untuk U2d, cukup menyebut getline atau menulis getline(cin, nama); menyebut cin.ignore sebagai tambahan tidak wajib dan tidak mengurangi nilai.",
+        "Perbaikan lain seperti membaca dua variabel (cin >> depan >> belakang) tidak memenuhi U2d karena tidak berlaku untuk nama dengan jumlah kata berbeda.",
+        "Jawaban 'program error atau crash' tanpa penjelasan di atas tidak memenuhi butir apa pun.",
+        "Mahasiswa yang menyatakan nama terbaca utuh 'Siti Aminah' gugur pada U2a dan U2b."
+      ]
+    }
+  ]
+}

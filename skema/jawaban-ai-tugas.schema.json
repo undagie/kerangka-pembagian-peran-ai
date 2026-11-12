@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jawaban-ai-tugas.schema.json",
+  "title": "Jawaban AI untuk satu kiriman tugas",
+  "description": "Dibuat dari SKEMA_NILAI di alat. Jangan disunting manual; uji memastikan isinya sama dengan kode.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kriteria",
+    "pembuka",
+    "hal_baik",
+    "masukan",
+    "catatan_dosen"
+  ],
+  "properties": {
+    "kriteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "butir",
+          "bukti",
+          "status",
+          "umpan_balik"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "butir": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "bukti",
+                "terpenuhi",
+                "yakin"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "bukti": {
+                  "type": "string"
+                },
+                "terpenuhi": {
+                  "type": "boolean"
+                },
+                "yakin": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "bukti": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "tercapai",
+              "sebagian",
+              "belum",
+              "tidak bisa dinilai"
+            ]
+          },
+          "umpan_balik": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "pembuka": {
+      "type": "string"
+    },
+    "hal_baik": {
+      "type": "string"
+    },
+    "masukan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "catatan_dosen": {
+      "type": "string"
+    }
+  }
+}

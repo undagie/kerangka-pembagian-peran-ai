@@ -1,0 +1,47 @@
+{
+  "judul": "Contoh Rubrik Laporan Praktikum (umum, non-pemrograman)",
+  "aturan_umum": [
+    "Ejaan dan tata bahasa tidak dinilai.",
+    "Angka hasil pengamatan tidak dinilai benar atau salahnya; yang dinilai cara mengolah dan menafsirkannya.",
+    "Menyalin ulang petunjuk praktikum tanpa penjelasan tidak memenuhi butir apa pun."
+  ],
+  "soal": [
+    {
+      "slot": 1,
+      "nama": "L1 Tujuan",
+      "teks": "Tuliskan tujuan praktikum.",
+      "maks": 10,
+      "jawaban_ideal": "Tujuan menyebut besaran yang diukur, cara mengukurnya, dan hasil yang ingin dibandingkan.",
+      "butir": [
+        { "id": "L1a", "label": "Besaran yang diukur", "teks": "Menyebut besaran atau variabel yang diukur dalam percobaan", "poin": 5 },
+        { "id": "L1b", "label": "Pembanding yang dituju", "teks": "Menyebut apa yang akan dibandingkan atau dibuktikan, misalnya nilai teori atau hubungan antarvariabel", "poin": 5 }
+      ],
+      "aturan": ["L1a dan L1b boleh ada dalam satu kalimat."]
+    },
+    {
+      "slot": 2,
+      "nama": "L2 Analisis",
+      "teks": "Analisis hasil pengamatan Anda.",
+      "maks": 30,
+      "jawaban_ideal": "Analisis membandingkan hasil dengan teori, menghitung atau menyebut besar selisihnya, dan menjelaskan sumber galat yang masuk akal.",
+      "butir": [
+        { "id": "L2a", "label": "Membandingkan dengan teori", "teks": "Membandingkan hasil pengamatan dengan nilai teori atau harapan", "poin": 10 },
+        { "id": "L2b", "label": "Besar selisih", "teks": "Menyebut besar selisih atau galat relatif antara hasil dan teori", "poin": 10, "kutipan": false },
+        { "id": "L2c", "label": "Sumber galat", "teks": "Menyebut paling sedikit satu sumber galat yang masuk akal untuk percobaan ini", "poin": 10 }
+      ],
+      "aturan": ["L2c: 'kesalahan praktikan' tanpa penjelasan tidak memenuhi butir ini."]
+    },
+    {
+      "slot": 3,
+      "nama": "L3 Kesimpulan",
+      "teks": "Tuliskan kesimpulan.",
+      "maks": 10,
+      "jawaban_ideal": "Kesimpulan menjawab tujuan dan sesuai dengan hasil analisis.",
+      "butir": [
+        { "id": "L3a", "label": "Menjawab tujuan", "teks": "Kesimpulan menjawab tujuan yang ditulis di L1", "poin": 5 },
+        { "id": "L3b", "label": "Sesuai hasil analisis", "teks": "Kesimpulan tidak bertentangan dengan hasil analisis di L2", "poin": 5 }
+      ],
+      "aturan": []
+    }
+  ]
+}

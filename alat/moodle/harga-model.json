@@ -1,0 +1,56 @@
+{
+  "dicatat": "2026-10-11",
+  "sumber": "https://openrouter.ai/api/v1/models",
+  "satuan": "USD per 1 juta token",
+  "model": {
+    "openai/gpt-6-luna": {
+      "nama": "OpenAI: GPT-6 Luna",
+      "masuk": 0.1,
+      "keluar": 0.5,
+      "cache_baca": 0.01,
+      "cache_tulis": 0.125
+    },
+    "anthropic/claude-haiku-5.5": {
+      "nama": "Anthropic: Claude Haiku 5.5",
+      "masuk": 0.1,
+      "keluar": 0.5,
+      "cache_baca": 0.01,
+      "cache_tulis": 0.125
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "nama": "DeepSeek: DeepSeek V4.1 Flash",
+      "masuk": 0.3,
+      "keluar": 1.2,
+      "cache_baca": 0.006,
+      "cache_tulis": 0.0
+    },
+    "google/gemini-3.8-flash": {
+      "nama": "Google: Gemini 3.8 Flash",
+      "masuk": 0.75,
+      "keluar": 3.75,
+      "cache_baca": 0.075,
+      "cache_tulis": 0.041667
+    },
+    "xiaomi/mimo-v2.6-flash": {
+      "nama": "Xiaomi: MiMo-V2.6-Flash",
+      "masuk": 0.14,
+      "keluar": 0.28,
+      "cache_baca": 0.0028,
+      "cache_tulis": 0.0
+    },
+    "anthropic/claude-sonnet-5.5": {
+      "nama": "Anthropic: Claude Sonnet 5.5",
+      "masuk": 2.0,
+      "keluar": 10.0,
+      "cache_baca": 0.1,
+      "cache_tulis": 2.5
+    },
+    "openai/gpt-6-sol": {
+      "nama": "OpenAI: GPT-6 Sol",
+      "masuk": 2.0,
+      "keluar": 10.0,
+      "cache_baca": 0.2,
+      "cache_tulis": 2.5
+    }
+  }
+}

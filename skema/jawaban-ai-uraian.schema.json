@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jawaban-ai-uraian.schema.json",
+  "title": "Jawaban AI untuk satu jawaban uraian",
+  "description": "Dibuat dari SKEMA_ESAI di alat. Jangan disunting manual; uji memastikan isinya sama dengan kode.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "butir",
+    "umpan_balik",
+    "catatan_dosen"
+  ],
+  "properties": {
+    "butir": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "alasan",
+          "kutipan",
+          "terpenuhi"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "alasan": {
+            "type": "string"
+          },
+          "kutipan": {
+            "type": "string"
+          },
+          "terpenuhi": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "umpan_balik": {
+      "type": "string"
+    },
+    "catatan_dosen": {
+      "type": "string"
+    }
+  }
+}

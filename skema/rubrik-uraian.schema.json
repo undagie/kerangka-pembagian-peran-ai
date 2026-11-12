@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rubrik-uraian.schema.json",
+  "title": "Rubrik penilaian jawaban uraian",
+  "description": "Rubrik untuk soal uraian kuis, tugas tertulis, atau laporan. Setiap butir adalah satu gagasan yang dapat dikutip dari jawaban. Validasi lengkap dijalankan alat lewat perintah cek.",
+  "type": "object",
+  "required": ["soal"],
+  "properties": {
+    "judul": { "type": "string" },
+    "aturan_umum": { "type": "array", "items": { "type": "string" }, "description": "Berlaku untuk semua soal, mis. ejaan tidak dinilai." },
+    "soal": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["slot", "maks", "butir"],
+        "properties": {
+          "slot": { "type": "integer", "minimum": 1, "description": "Nomor soal. Di LMS ini nomor slot kuis; di alat baris perintah ini nama berkas <slot>.txt." },
+          "nama": { "type": "string" },
+          "teks": { "type": "string", "description": "Teks soal." },
+          "maks": { "type": "number", "exclusiveMinimum": 0, "description": "Harus sama dengan jumlah poin butir." },
+          "jawaban_ideal": { "type": "string" },
+          "aturan": { "type": "array", "items": { "type": "string" } },
+          "butir": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["teks", "poin"],
+              "properties": {
+                "id": { "type": "string", "description": "Mis. U1a. Unik di seluruh rubrik." },
+                "label": { "type": "string", "description": "3 sampai 8 kata untuk ditampilkan ke mahasiswa." },
+                "teks": { "type": "string", "description": "Kriteria lengkap untuk penilai." },
+                "poin": { "type": "number", "exclusiveMinimum": 0 },
+                "kutipan": { "type": "boolean", "default": true, "description": "false bila butir tidak dapat dibuktikan dengan kutipan, mis. hasil hitungan." }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}
